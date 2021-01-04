@@ -1,0 +1,35 @@
+﻿@model PeopleTrackingApi.Web.Models.LoginModel
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+    <form method="POST" action="/Account/Login" class="form">
+        <!--begin::Title-->
+        <div class="pb-13 pt-lg-0 pt-5">
+            <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">WELCOME TO HEAD BODY BEST</h3>
+            <p style="color:red; margin-top:10px">@ViewData["ErrorTxt"]</p>
+        </div>
+        <!--begin::Title-->
+        <!--begin::Form group-->
+        <div class="form-group">
+            <label class="font-size-h6 font-weight-bolder text-dark">Username</label>
+            @Html.TextBoxFor(m => m.LoginID, new { @class = "form-control form-control-solid h-auto py-6 px-6 rounded-lg", @placeholder = "Username" })
+        </div>
+        <!--end::Form group-->
+        <!--begin::Form group-->
+        <div class="form-group">
+            <div class="d-flex justify-content-between mt-n5">
+                <label class="font-size-h6 font-weight-bolder text-dark pt-5">Password</label>
+                <a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">Forgot Password ?</a>
+            </div>
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-solid h-auto py-6 px-6 rounded-lg", @placeholder = "Password" })
+        </div>
+        <!--end::Form group-->
+        <!--begin::Action-->
+        <div class="pb-lg-0 pb-5">
+            <button type="submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Sign In</button>
+
+        </div>
+        <!--end::Action-->
+    </form>
+

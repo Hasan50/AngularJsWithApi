@@ -1,0 +1,98 @@
+﻿
+@using PeopleTrackingApi.Web.Helpers
+
+<div id="fundApprovalSetup" ng-controller="employeeCreateController">
+    <div class="modal-header">
+        <div class="modal-title">Employee </div>
+        <div class="header-button-group">
+            <div class="btn btn-xs btn-icon btn-danger btn-hover-primary" title="Close" ng-click="closeModal()">X</div>
+        </div>
+
+    </div>
+
+    <div class="modal-body"  ng-init="getCompanyAgentList(@CommonUtility.IsSuperAdmin)">
+
+        <div class="content-panel light">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Employee Name<span class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.UserFullName" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Phone No<span class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.PhoneNumber" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Email</label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.Email" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Password<span ng-if="BusinessModel.Id==0" class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.Password" ng-required="BusinessModel.Id==0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-3 col-form-label" style="float:left">Active:</label>
+                        <div class="col-3" style="float:left">
+                            <span class="switch switch-icon">
+                                <label>
+                                    <input type="checkbox" checked="checked" name="select" ng-model="BusinessModel.IsActive" />
+                                    <span></span>
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" style="float:left">Company<span class="required-field">*</span></label>
+                        <div class="col-sm-12" style="float:left">
+                            <tag-in-au-tl class="customCssTag" taglist='listAutocomplete' input-text="inputText" tag-on-change="tagChange" limit-set-tag="6"></tag-in-au-tl>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer" style="clear: both;">
+        <div class="col-sm-12" style="text-align: right;">
+            <button type="button" class="btn btn-success" ng-disabled="IsLoading" ng-class="{'spinner spinner-white spinner-right': IsLoading}" ng-click="Save()">Save</button>
+        </div>
+    </div>
+
+</div>
+
+
+

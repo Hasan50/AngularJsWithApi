@@ -1,0 +1,119 @@
+﻿
+
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-controller="userController">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-2">
+                <!--begin::Page Title-->
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Update Your Profile</h5>
+                <!--end::Page Title-->
+                <!--begin::Actions-->
+                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                <!--end::Actions-->
+            </div>
+            <!--end::Info-->
+            <div class="d-flex align-items-center">
+            </div>
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <div class="d-flex flex-column-fluid" id="divWrapper">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="card card-custom">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Hello, {{BusinessModel.UserName}}
+                    </h3>
+                    <div class="card-toolbar">
+                        <div class="example-tools justify-content-center">
+                            <span class="example-toggle" data-toggle="tooltip" title="View code"></span>
+                            <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--begin::Form-->
+                    <div class="card-body">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Full Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control validator" placeholder="Enter full name" ng-model="BusinessModel.UserFullName" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control validator" placeholder="Enter phone number" ng-model="BusinessModel.PhoneNumber" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control validator" placeholder="Enter your email" ng-model="BusinessModel.Email" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="reset" class="btn btn-primary mr-2"ng-click="Update()">Submit</button>
+                    </div>
+                <!--end::Form-->
+            </div>
+
+        </div>
+        <!--end::Container-->
+    </div>
+
+
+
+</div>
+
+<script type="text/javascript">
+
+    var KTBootstrapDatepicker = function () {
+
+        var arrows;
+        if (KTUtil.isRTL()) {
+            arrows = {
+                leftArrow: '<i class="la la-angle-right"></i>',
+                rightArrow: '<i class="la la-angle-left"></i>'
+            }
+        } else {
+            arrows = {
+                leftArrow: '<i class="la la-angle-left"></i>',
+                rightArrow: '<i class="la la-angle-right"></i>'
+            }
+        }
+
+        // Private functions
+        var demos = function () {
+            // minimum setup
+            $('#kt_datepicker_1').datepicker({
+                rtl: KTUtil.isRTL(),
+                todayHighlight: true,
+                orientation: "bottom left",
+                templates: arrows,
+                format: 'd/m/yyyy',
+            });
+            $('#kt_datepicker_2').datepicker({
+                rtl: KTUtil.isRTL(),
+                todayHighlight: true,
+                orientation: "bottom left",
+                templates: arrows,
+                format: 'd/m/yyyy',
+            });
+        }
+
+        return {
+            // public functions
+            init: function () {
+                demos();
+            }
+        };
+    }();
+
+    jQuery(document).ready(function () {
+        KTBootstrapDatepicker.init();
+    });
+
+
+</script>

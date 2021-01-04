@@ -1,0 +1,102 @@
+﻿
+
+<div id="fundApprovalSetup">
+    <div class="modal-header">
+        <div class="modal-title">{{languageOb.Leavedetails}}</div>
+        <div class="header-button-group">
+            <div class="btn btn-xs btn-icon btn-danger btn-hover-primary" title="Close" ng-click="closeModal()">X</div>
+        </div>
+
+    </div>
+
+    <div class="modal-body">
+
+        <div class="content-panel light">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">{{languageOb.EmployeeName}}<span class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.EmployeeName" readonly />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">{{languageOb.FromDate}}<span class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.FromDateVw" required readonly/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">{{languageOb.ToDate}}<span class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.ToDateVw" required readonly/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">{{languageOb.LeaveType}}</label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.LeaveType" readonly />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">{{languageOb.LeaveReason}}</label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.LeaveReason" readonly />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">{{languageOb.NoOfDays}}</label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.LeaveInDays" readonly/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">{{languageOb.Status}}<span class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <select class="form-control" ng-model="BusinessModel.StatusId">
+                                <option value="">{{languageOb.Pending}}</option>
+                                <option value="0">Rejected</option>
+                                <option value="1">Approved</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer" style="clear: both;">
+        <div class="col-sm-12" style="text-align: right;">
+            <button type="button" class="btn btn-success" ng-disabled="IsLoading" ng-class="{'spinner spinner-white spinner-right': IsLoading}" ng-click="Save()">{{languageOb.Save}}</button>
+        </div>
+    </div>
+
+</div>
+
+
+

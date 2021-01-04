@@ -1,0 +1,100 @@
+﻿
+
+<div id="fundApprovalSetup">
+    <div class="modal-header">
+        <div class="modal-title row col-md-12">
+            <div class="col-sm-6">
+                {{languageOb.AttendanceDetailsOf}}: {{BusinessModels[0].EmployeeName}}
+            </div>
+                <div class="d-flex align-items-center">
+                    <a ng-click="AttendanceDetialsExportToExcel()" class="btn btn-info font-weight-bolder font-size-sm">{{languageOb.ExportToExcel}}</a>
+                </div>
+        </div>
+        <div class="header-button-group">
+
+            <div class="btn btn-xs btn-icon btn-danger btn-hover-primary" title="Close" ng-click="closeModal()">X</div>
+        </div>
+
+    </div>
+
+    <div class="modal-body">
+
+        <div class="content-panel light">
+            <form class="mb-15">
+                <div class="row mb-8">
+                    <div class="col-lg-4 mb-lg-0 mb-6">
+                        <label>{{languageOb.FromDate}}:</label>
+                        <input type="text" class="form-control" datepicker="" id="kt_datepicker_1" ng-model="detailsFilterOb.fromDate" readonly="readonly" placeholder="Select date">
+                    </div>
+                    <div class="col-lg-4 mb-lg-0 mb-6">
+                        <label>{{languageOb.ToDate}}:</label>
+                        <input type="text" class="form-control" datepicker="" id="kt_datepicker_2" ng-model="detailsFilterOb.toDate" readonly="readonly" placeholder="Select date">
+                    </div>
+                    <div class="col-lg-4 mb-lg-0 mb-6" style="margin-top:25px">
+                        <button class="btn btn-primary btn-primary--icon" id="kt_search" ng-click="filterDetailsList()">
+                            <span>
+                                <i class="la la-search"></i>
+                                <span>{{languageOb.Search}}</span>
+                            </span>
+                        </button>&nbsp;&nbsp;
+                        <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" ng-click="detailsResetForm()">
+                            <span>
+                                <i class="la la-close"></i>
+                                <span>{{languageOb.Reset}}</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_2">
+                    <thead>
+                        <tr class="text-uppercase">
+                            <th class="pr-0">{{languageOb.Date}}</th>
+                            <th class="pr-0">{{languageOb.Company}}</th>
+                            <th class="pl-0" style="min-width: 100px">{{languageOb.InTime}}</th>
+                            <th style="min-width: 120px">{{languageOb.OutTime}}</th>
+                            <th style="min-width: 150px">
+                                {{languageOb.CompleatedHours}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in BusinessModels">
+                            <td class="pl-0">
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{x.AttendanceDateVw}}</span>
+                            </td>
+                            <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{x.AgentName}}</span>
+                            </td>
+                            <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{x.CheckInTimeVw}}</span>
+                            </td>
+                            <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{x.CheckOutTimeVw}}</span>
+                            </td>
+                            <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{x.OfficeStayHour}}</span>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal-footer" style="clear: both;">
+        <div class="col-sm-12" style="text-align: right;">
+            @*<button type="button" class="btn btn-success" ng-click="Save()">Save</button>*@
+        </div>
+    </div>
+
+</div>
+
+
+

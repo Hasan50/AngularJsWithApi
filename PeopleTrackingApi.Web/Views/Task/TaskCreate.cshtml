@@ -1,0 +1,108 @@
+﻿
+
+<div id="fundApprovalSetup">
+    <div class="modal-header">
+        <div class="modal-title">{{languageOb.Task}}</div>
+        <div class="header-button-group">
+            <div class="btn btn-xs btn-icon btn-danger btn-hover-primary" title="Close" ng-click="closeModal()">X</div>
+        </div>
+
+    </div>
+
+    <div class="modal-body">
+
+        <div class="content-panel light">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" style="float:left">{{languageOb.Title}}<span class="required-field">*</span></label>
+                        <div class="col-sm-9" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.Title" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" style="float:left">{{languageOb.DueDate}}</label>
+                        <div class="col-sm-9" style="float:left">
+                            <input type="text" class="form-control" datepicker ng-model="BusinessModel.DueDateVw" id="kt_datepicker_1" readonly="readonly" placeholder="Select date">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" style="float:left">{{languageOb.Description}}</label>
+                        <div class="col-sm-9" style="float:left">
+                            <textarea class="form-control" ng-model="BusinessModel.Description" style="height:120px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" style="float:left">{{languageOb.Status}}</label>
+                        <div class="col-sm-9" style="float:left">
+                            <select class="form-control" ng-model="BusinessModel.StatusId">
+                                <option ng-repeat="t in statusList" value="{{t.Id}}">{{t.Name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" style="float:left">Assign To</label>
+                        <div class="col-sm-9" style="float:left">
+                            <select class="form-control" ng-model="BusinessModel.AssignedToId">
+                                <option value="">Select Employee</option>
+                                <option ng-repeat="t in employeeList" value="{{t.UserId}}">{{t.UserName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" style="float:left">{{languageOb.Priority}}</label>
+                        <div class="col-sm-9" style="float:left">
+                            <select class="form-control" ng-model="BusinessModel.PriorityId">
+                                <option ng-repeat="t in priorityList" value="{{t.Id}}">{{t.Name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" style="float:left">{{languageOb.File}}</label>
+                        <div class="col-sm-9" style="float:left">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="imageFiles" onchange="angular.element(this).scope().uploadImage()">
+                                <label class="custom-file-label" for="customFile">{{tempFilePath}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="modal-footer" style="clear: both;">
+        <div class="col-sm-12" style="text-align: right;">
+            <button type="button" class="btn btn-success" ng-disabled="IsLoading"  ng-class="{'spinner spinner-white spinner-right': IsLoading}" ng-click="Save()">Save</button>
+        </div>
+    </div>
+
+</div>
+

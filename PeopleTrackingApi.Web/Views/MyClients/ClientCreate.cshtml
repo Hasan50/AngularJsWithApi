@@ -1,0 +1,235 @@
+﻿
+
+<div id="fundApprovalSetup">
+    <div class="modal-header">
+        <div class="modal-title">Client Setup </div>
+        <div class="header-button-group">
+            <div class="btn btn-xs btn-icon btn-danger btn-hover-primary" title="Close" ng-click="closeModal()">X</div>
+        </div>
+
+    </div>
+
+    <div class="modal-body">
+
+        <div class="content-panel light">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Client Name<span class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.CompanyName" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Phone No<span class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.PhoneNumber" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">
+                            Contact Person Name
+                            <span class="required-field">*</span>
+                        </label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.ContactPersonName" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Admin Name<span class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.CompanyAdminName" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Admin Login ID<span class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.CompanyAdminLoginID" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Admin Login Email</label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control" ng-model="BusinessModel.CompanyAdminEmail" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Company Address</label>
+                        <div class="col-sm-7" style="float:left">
+                            <input vs-google-autocomplete
+                                   ng-model="address.name"
+                                   vs-place="address.place"
+                                   vs-place-id="address.components.placeId"
+                                   vs-street-number="address.components.streetNumber"
+                                   vs-street="address.components.street"
+                                   vs-city="address.components.city"
+                                   vs-state="address.components.state"
+                                   vs-country-short="address.components.countryCode"
+                                   vs-country="address.components.country"
+                                   vs-post-code="address.components.postCode"
+                                   vs-district="address.components.district"
+                                   vs-latitude="address.components.location.lat"
+                                   vs-longitude="address.components.location.long"
+                                   type="text"
+                                   name="address"
+                                   id="address"
+                                   class="form-control"
+                                   placeholder="Enter address" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Company Address<span class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <textarea class="form-control validator" ng-model="BusinessModel.Address" style="height:120px;" required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Password<span ng-show="BusinessModel.Id==0" class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModel.CompanyAdminPassword" ng-required="BusinessModel.Id==0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Time In Min</label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="number" placeholder="Inter time for auto checking" class="form-control" ng-model="BusinessModel.GeofanceTime" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">Radious</label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control" ng-model="BusinessModel.GeofanceRadious" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-3 col-form-label" style="float:left">Trip History:</label>
+                        <div class="col-3" style="float:left">
+                            <span class="switch switch-icon">
+                                <label>
+                                    <input type="checkbox" checked="checked" name="select" ng-model="BusinessModel.IsDateTripHistory" />
+                                    <span></span>
+                                </label>
+                            </span>
+                        </div>
+                        <label class="col-3 col-form-label" style="float:left">Task Menu:</label>
+                        <div class="col-3" style="float:left">
+                            <span class="switch switch-icon">
+                                <label>
+                                    <input type="checkbox" checked="checked" name="select" ng-model="BusinessModel.IsShowTaskMenu" />
+                                    <span></span>
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-3 col-form-label" style="float:left">Leave Menu:</label>
+                        <div class="col-3" style="float:left">
+                            <span class="switch switch-icon">
+                                <label>
+                                    <input type="checkbox" checked="checked" name="select" ng-model="BusinessModel.IsShowLeaveMenu" />
+                                    <span></span>
+                                </label>
+                            </span>
+                        </div>
+                        <label class="col-3 col-form-label" style="float:left">TaskDate Filter:</label>
+                        <div class="col-3" style="float:left">
+                            <span class="switch switch-icon">
+                                <label>
+                                    <input type="checkbox" checked="checked" name="select" ng-model="BusinessModel.IsShowTaskDateFilter" />
+                                    <span></span>
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:5px">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-3 col-form-label" style="float:left">App Accesible:</label>
+                        <div class="col-3" style="float:left">
+                            <span class="switch switch-icon">
+                                <label>
+                                    <input type="checkbox" checked="checked" name="select" ng-model="BusinessModel.IsMobileAppAccesible" />
+                                    <span></span>
+                                </label>
+                            </span>
+                        </div>
+                        <label class="col-3 col-form-label" style="float:left">Active/Inactive:</label>
+                        <div class="col-3" style="float:left">
+                            <span class="switch switch-icon">
+                                <label>
+                                    <input type="checkbox" checked="checked" name="select" ng-model="BusinessModel.IsActive" />
+                                    <span></span>
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer" style="clear: both;">
+        <div class="col-sm-12" style="text-align: right;">
+            <button type="button" class="btn btn-success" ng-click="Save()">Save</button>
+        </div>
+    </div>
+
+</div>
+
+
+

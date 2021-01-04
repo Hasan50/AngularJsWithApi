@@ -1,0 +1,39 @@
+﻿
+
+<div id="fundApprovalSetup">
+    <div class="modal-header">
+        <div class="modal-title">{{languageOb.SickType}}</div>
+        <div class="header-button-group">
+            <div class="btn btn-xs btn-icon btn-danger btn-hover-primary" title="Close" ng-click="closeModal()">X</div>
+        </div>
+
+    </div>
+
+    <div class="modal-body">
+
+        <div class="content-panel light">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label" style="float:left">{{languageOb.Name}}<span class="required-field">*</span></label>
+                        <div class="col-sm-7" style="float:left">
+                            <input type="text" class="form-control validator" ng-model="BusinessModelSickType.Name" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer" style="clear: both;">
+        <div class="col-sm-12" style="text-align: right;">
+            <button type="button" class="btn btn-success" ng-disabled="IsLoading" ng-class="{'spinner spinner-white spinner-right': IsLoading}" ng-click="SaveSickType()">Save</button>
+
+        </div>
+    </div>
+
+</div>
+
+
+

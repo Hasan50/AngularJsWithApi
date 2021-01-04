@@ -1,0 +1,116 @@
+﻿<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-controller="myClientsController">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-2">
+                <!--begin::Page Title-->
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">My Clients</h5>
+                <!--end::Page Title-->
+                <!--begin::Actions-->
+                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                <a class="btn btn-primary font-weight-bolder btn-sm" ng-click="AddOrEdit(0)" >Add New Client</a>
+                <!--end::Actions-->
+            </div>
+            <!--end::Info-->
+            <div class="d-flex align-items-center">
+                <a ng-click="ClientsExportToExcel()" class="btn btn-info font-weight-bolder font-size-sm">Export To Excel</a>
+            </div>
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <div class="d-flex flex-column-fluid" id="divWrapper">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="card card-custom gutter-b">
+
+                <!--begin::Body-->
+                <div class="card-body py-0">
+
+                    <!--begin::Table-->
+                    <div class="table-responsive{-sm|-md|-lg|-xl}" ng-init="GetDataList()">
+                        <table class="table table-head-custom table-vertical-center">
+                            <thead>
+                                <tr class="text-uppercase">
+                                    <th class="pr-0" style="width:90px;"></th>
+                                    <th style="width:250px;">Client Name</th>
+                                    <th style="width:150px;">Contact No</th>
+                                    <th style="width:180px;">Admin Name</th>
+                                    <th style="width:180px;">Login ID</th>
+                                    <th style="width:180px;">Geo Fance Time</th>
+                                    <th style="width:180px;">Geo Fance Region</th>
+                                    <th style="width:120px;">Date Trip History</th>
+                                    <th style="width:120px;">Task Menu</th>
+                                    <th style="width:120px;">Leave Men</th>
+                                    <th style="width:120px;">Task Date Filter</th>
+                                    <th style="width:120px;">Mobile App Accesible</th>
+                                    <th class="text-right">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="x in DataList|orderBy:sort.column:sort.descending|itemsPerPage:pageSize" pagination-id="employeeGrid">
+                                    <td class="pr-0 text-left" style="width:105px">
+                                        <i class="flaticon-edit icon-md" style="cursor:pointer;" ng-click="AddOrEdit(x.Id)" title="Edit"></i>
+                                        <i class="flaticon-delete icon-md" style="cursor:pointer;margin-left:10px;" ng-click="deleteData(x.Id)" title="Delete"></i>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.CompanyName}}</span>
+                                    </td>
+
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.PhoneNumber}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.CompanyAdminName}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.CompanyAdminLoginID}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.GeofanceTime}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.GeofanceRadious}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.DateTripHistory}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.ShowTaskMenu}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.ShowLeaveMenu}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.ShowTaskDateFilter}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.MobileAppAccesible}}</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span class="text-dark-75 font-weight-bolder d-block">
+                                            <span class="badge badge-success" ng-if="x.IsActive">{{x.ActiveStatus}}</span>
+                                            <span class="badge badge-warning" ng-if="!x.IsActive">{{x.ActiveStatus}}</span>
+                                        </span>
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <dir-pagination-controls max-size="pageSize"
+                                                 direction-links="true"
+                                                 pagination-id="employeeGrid"
+                                                 boundary-links="true">
+                        </dir-pagination-controls>
+                    </div>
+                    <!--end::Table-->
+                </div>
+                <!--end::Body-->
+            </div>
+
+        </div>
+        <!--end::Container-->
+    </div>
+</div>
+

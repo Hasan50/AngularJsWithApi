@@ -1,0 +1,182 @@
+﻿
+
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-controller="taskController">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-2">
+                <!--begin::Page Title-->
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">{{languageOb.Tasks}}</h5>
+                <!--end::Page Title-->
+                <!--begin::Actions-->
+                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                <a  class="btn btn-primary font-weight-bolder btn-sm" ng-click="AddOrEdit(null)">{{languageOb.AddNewTask}}</a>
+                <!--end::Actions-->
+            </div>
+            <!--end::Info-->
+            <div class="d-flex align-items-center">
+                <a  ng-click="ExportToExcel()" class="btn btn-info font-weight-bolder font-size-sm">{{languageOb.ExportToExcel}}</a>
+            </div>
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <div class="d-flex flex-column-fluid" id="divWrapper">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="card card-custom gutter-b">
+                <!--begin::Body-->
+                <div class="card-body py-0" style="margin-top:20px;">
+                    <form class="mb-15">
+                        <div class="row mb-12">
+                            <div class="col-lg-3 mb-lg-0 mb-6">
+                                <label>{{languageOb.TaskCreateDate}}:</label>
+                                <input type="text" class="form-control" id="kt_datepicker_1" ng-model="filterOb.taskDate" readonly="readonly" placeholder="Select date">
+                            </div>
+                            <div class="col-lg-3 mb-lg-0 mb-6">
+                                <label>{{languageOb.TaskDueDate}}:</label>
+                                <input type="text" class="form-control" id="kt_datepicker_2" ng-model="filterOb.dueDate" readonly="readonly" placeholder="Select date">
+                            </div>
+                            <div class="col-lg-3 mb-lg-0 mb-6" style="margin-top:25px">
+                                <button class="btn btn-primary btn-primary--icon" id="kt_search" ng-click="GetDataList()">
+                                    <span>
+                                        <i class="la la-search"></i>
+                                        <span>{{languageOb.Search}}</span>
+                                    </span>
+                                </button>&nbsp;&nbsp;
+                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" ng-click="resetForm()">
+                                    <span>
+                                        <i class="la la-close"></i>
+                                        <span>{{languageOb.Reset}}</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                    <!--begin::Table-->
+                    <div class="table-responsive" ng-init="GetDataList()">
+                        <table class="table table-head-custom table-vertical-center">
+                            <thead>
+                                <tr class="text-uppercase">
+                                    <th class="pr-0" style="width:70px;"></th>
+                                    <th style="width:90px;">{{languageOb.TaskNo}}</th>
+                                    <th style="width:180px;">{{languageOb.CreatedDate}}</th>
+                                    <th>{{languageOb.Title}}</th>
+                                    <th>{{languageOb.Description}}</th>
+                                    <th style="width:150px;">Assign To</th>
+                                    <th style="width:100px;">{{languageOb.Priority}}</th>
+                                    <th style="width:100px;">{{languageOb.DueDate}}</th>
+                                    <th style="width:100px;" class="text-right">{{languageOb.Status}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="x in DataList|itemsPerPage:pageSize" pagination-id="employeeGrid">
+                                    <td class="pr-0 text-left" style="width:90px">
+                                        <i class="flaticon-eye icon-md" style="cursor:pointer;" ng-click="Details(x)" title="View Details"></i>
+                                        <i class="flaticon-edit icon-md" style="cursor:pointer;margin-left:10px" ng-click="AddOrEdit(x.Id)" title="Edit Task"></i>
+                                        <i class="flaticon-delete icon-md" style="cursor:pointer;margin-left:10px;" ng-click="deleteData(x.Id)" title="Delete Task"></i>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.TaskNo}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.CreatedAtVw}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.Title}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.Description}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.AssignToName}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.PriorityName}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.DueDateVw}}</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span class="text-dark-75 font-weight-bolder d-block">
+                                            <span class="badge badge-success" ng-if="x.StatusId==4">{{x.StatusName}}</span>
+                                            <span class="badge badge-primary" ng-if="x.StatusId=='1'">{{x.StatusName}}</span>
+                                            <span class="badge badge-info" ng-if="x.StatusId=='2'">{{x.StatusName}}</span>
+                                        </span>
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <dir-pagination-controls max-size="pageSize"
+                                                 direction-links="true"
+                                                 pagination-id="employeeGrid"
+                                                 boundary-links="true">
+                        </dir-pagination-controls>
+                    </div>
+                    <!--end::Table-->
+                </div>
+                <!--end::Body-->
+            </div>
+
+        </div>
+        <!--end::Container-->
+    </div>
+
+
+
+</div>
+
+<script type="text/javascript">
+   
+    var KTBootstrapDatepicker = function () {
+
+        var arrows;
+        if (KTUtil.isRTL()) {
+            arrows = {
+                leftArrow: '<i class="la la-angle-right"></i>',
+                rightArrow: '<i class="la la-angle-left"></i>'
+            }
+        } else {
+            arrows = {
+                leftArrow: '<i class="la la-angle-left"></i>',
+                rightArrow: '<i class="la la-angle-right"></i>'
+            }
+        }
+
+        // Private functions
+        var demos = function () {
+            // minimum setup
+            $('#kt_datepicker_1').datepicker({
+                rtl: KTUtil.isRTL(),
+                todayHighlight: true,
+                orientation: "bottom left",
+                templates: arrows,
+                format: 'd/m/yyyy',
+            });
+            $('#kt_datepicker_2').datepicker({
+                rtl: KTUtil.isRTL(),
+                todayHighlight: true,
+                orientation: "bottom left",
+                templates: arrows,
+                format: 'd/m/yyyy',
+            });
+        }
+
+        return {
+            // public functions
+            init: function () {
+                demos();
+            }
+        };
+    }();
+
+    jQuery(document).ready(function () {
+        KTBootstrapDatepicker.init();
+    });
+
+   
+</script>

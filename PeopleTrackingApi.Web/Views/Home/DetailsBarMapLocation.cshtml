@@ -1,0 +1,41 @@
+﻿
+<style>
+
+    #map {
+        height: 500px;
+        width: 100%;
+        box-shadow: 3px 3px 10px gray;
+    }
+
+    .modal.fade:not(.in) .modal-dialog {
+        -webkit-transform: translate3d(25%, 0, 0);
+        transform: translate3d(25%, 0, 0);
+    }
+</style>
+<div ng-controller="detailsBarMapLocationController">
+    <div class="modal-header">
+        <div class="modal-title">Map Location of: {{userOb.UserName}}</div>
+        <div class="header-button-group">
+            <div class="btn btn-xs btn-icon btn-danger btn-hover-primary" title="Close" ng-click="closeModal()">X</div>
+        </div>
+
+    </div>
+
+    <div class="modal-body">
+
+        <div class="content-panel light">
+
+            <div id="map" ng-init="loadMap()"></div>
+
+        </div>
+    </div>
+
+    <div class="modal-footer" style="clear: both;">
+        <div class="col-sm-12" style="text-align: right;">
+            <button type="button" class="btn btn-default" ng-click="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+
+

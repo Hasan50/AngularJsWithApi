@@ -1,0 +1,51 @@
+﻿
+
+
+
+<div>
+    <div class="modal-header">
+        <div class="modal-title">{{languageOb.SickType}}</div>
+        <div class="header-button-group">
+
+            <div class="btn btn-xs btn-icon btn-danger btn-hover-primary" title="Close" ng-click="closeModalSickType()">X</div>
+
+        </div>
+
+    </div>
+
+    <div class="modal-body">
+
+        <div class="content-panel light">
+            <a class="btn btn-light-primary font-weight-bolder btn-sm" style="margin-bottom:20px;" ng-click="AddOrEditSickType(0)">Add New Sick Type</a>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="table-responsive" ng-init="GetSickTypeDataList()">
+                        <table class="table table-head-custom table-vertical-center">
+                           
+                            <tbody>
+                                <tr ng-repeat="x in DataListSickType">
+                                    <td class="pr-0 text-left">
+                                        <i class="flaticon-edit icon-md" style="cursor:pointer;" ng-click="AddOrEditSickType(x.Id)" title="Edit"></i>
+                                        <i class="flaticon-delete icon-md" style="cursor:pointer;margin-left:10px;" ng-click="deleteDataSickType(x.Id)" title="Delete"></i>
+                                    </td>
+                                    <td class="pl-0">
+                                        <span class="text-dark-75 font-weight-bolder d-block">{{x.Name}}</span>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer" style="clear: both;">
+        <div class="col-sm-12" style="text-align: right;">
+            <button type="button" class="btn btn-default" ng-click="closeModalSickType()">Close</button>
+        </div>
+    </div>
+
+</div>
+

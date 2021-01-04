@@ -1,0 +1,18 @@
+﻿
+
+
+ALTER TABLE BusinessDomain_EmployeeUser
+ADD EmployeeCode NVARCHAR(150)
+
+ALTER TABLE BusinessDomain_Attendance
+ADD CheckInTimeFile NVARCHAR(150)
+
+ALTER TABLE BusinessDomain_Attendance
+ADD CheckOutTimeFile NVARCHAR(150)
+
+
+    IF COL_LENGTH('EmployeeUser','Gender') IS NULL
+BEGIN
+	alter table EmployeeUser
+	add Gender varchar(26)
+END
