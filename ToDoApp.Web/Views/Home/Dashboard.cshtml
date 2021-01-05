@@ -1,10 +1,11 @@
 ﻿@using ToDoApp.Web.Helpers
-@if (CommonUtility.IsSuperAdmin)
-{
-    @Html.Partial("_SuperAdminDashboard")
-}
-else
-{
-    @Html.Partial("_AdminDashboard")
-}
+@*@if (CommonUtility.IsSuperAdmin)
+    {
+        @Html.Partial("_SuperAdminDashboard")
+    }
+    else
+    {
+        @Html.Partial("_AdminDashboard")
+    }*@
 
+@Html.Partial("_AdminDashboard")

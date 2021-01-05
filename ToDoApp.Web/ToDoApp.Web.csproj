@@ -1827,11 +1827,9 @@
     <Content Include="Views\SickType\Index.cshtml" />
     <Content Include="Views\Shared\_NotificationPartial.cshtml" />
     <Content Include="Views\Shared\_QuickActionPartial.cshtml" />
-    <Content Include="Views\Home\DisplayMapLocation.cshtml" />
     <Content Include="Views\Account\UpdateProfile.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Task\TaskDetails.cshtml" />
-    <Content Include="Views\Home\DetailsBarMapLocation.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Report\CompanyWiseDetails.cshtml" />
   </ItemGroup>
