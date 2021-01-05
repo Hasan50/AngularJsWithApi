@@ -1,0 +1,227 @@
+﻿@using ToDoApp.Web.Helpers
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" ng-controller="reportController">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-2">
+                <!--begin::Page Title-->
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">{{languageOb.AttendanceReport}}</h5>
+                <!--end::Page Title-->
+                <!--begin::Actions-->
+                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                <!--end::Actions-->
+            </div>
+            <!--end::Info-->
+            <div class="d-flex align-items-center">
+                <a  ng-click="EmployeesExportToExcel()" class="btn btn-info font-weight-bolder font-size-sm">{{languageOb.ExportToExcel}}</a>
+            </div>
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid" id="divWrapper">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Advance Table Widget 5-->
+            <div class="card card-custom gutter-b">
+
+                <!--begin::Body-->
+                <div class="card-body py-0" style="margin-top:20px;margin-bottom:20px;">
+                    <form class="mb-15">
+                        <div class="row mb-6">
+                            <div class="col-lg-2 mb-lg-0 mb-6">
+                                <label>{{languageOb.FromDate}}:</label>
+                                <input type="text" class="form-control" datepicker="" id="kt_datepicker_1" ng-model="filterOb.fromDate" readonly="readonly" placeholder="Select date">
+                            </div>
+                            <div class="col-lg-2 mb-lg-0 mb-6">
+                                <label>{{languageOb.ToDate}}:</label>
+                                <input type="text" class="form-control" datepicker="" id="kt_datepicker_2" ng-model="filterOb.toDate" readonly="readonly" placeholder="Select date">
+                            </div>
+
+                            <div class="col-lg-2 mb-lg-0 mb-6">
+                                <label>{{languageOb.Company}}:</label>
+                                <select class="form-control datatable-input" ng-model="filterOb.companyAgentId">
+                                    <option value="">{{languageOb.All}}</option>
+                                    <option ng-repeat="t in companyAgentList" value="{{t.Id}}">{{t.AgentName}}</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 mb-lg-0 mb-6" style="margin-top:25px">
+                                <button class="btn btn-primary btn-primary--icon" id="kt_search" ng-click="GetDataList()">
+                                    <span>
+                                        <i class="la la-search"></i>
+                                        <span>{{languageOb.Search}}</span>
+                                    </span>
+                                </button>&nbsp;&nbsp;
+                                <button class="btn btn-secondary btn-secondary--icon" id="kt_reset" ng-click="resetForm()">
+                                    <span>
+                                        <i class="la la-close"></i>
+                                        <span>{{languageOb.Reset}}</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <div class="card-body py-0">
+
+                        <ul class="nav nav-tabs nav-tabs-line">
+                            <li class="nav-item">
+                                <a class="nav-link active" style="cursor:pointer;" data-toggle="tab" ng-click="activeTab=1">Employee</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="cursor:pointer;" data-toggle="tab" ng-click="activeTab=2;">{{languageOb.Company}}</a>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content mt-5" id="myTabContent">
+                            <div class="tab-pane fade show" ng-class="{'active': activeTab==1}" role="tabpanel" aria-labelledby="kt_tab_pane_2">
+                                <!--begin::Table-->
+                                <div class="table-responsive" ng-init="GetDataList()">
+                                    <table class="table table-head-custom table-vertical-center">
+                                        <thead>
+                                            <tr class="text-uppercase">
+                                                <th class="pr-0" style="width:20px;"></th>
+                                                <th style="width:90px;">{{languageOb.EmployeeName}}</th>
+                                                <th style="width:150px;">{{languageOb.PresentDays}}</th>
+                                                <th style="width:100px;">{{languageOb.LeaveDays}}</th>
+                                                <th style="width:100px;">{{languageOb.CompletedHours}}</th>
+                                                <th style="width:100px;">{{languageOb.MissingOutTime}}</th>
+                                                <th style="width:100px;" class="text-right">{{languageOb.OverDueTime}}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr dir-paginate="x in DataList|orderBy:sort.column:sort.descending|itemsPerPage:pageSize" pagination-id="employeeGrid">
+                                                <td class="pr-0 text-left">
+                                                    <i class="flaticon-eye icon-md" style="cursor:pointer;" ng-click="ViewDetails(x.UserId)" title="View Details"></i>
+                                                </td>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder d-block">{{x.EmployeeName}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder d-block">{{x.TotalPresent}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder d-block">{{x.TotalLeave}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder d-block">{{x.TotalStayTime}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder d-block">{{x.TotalCheckedOutMissing}}</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span class="text-dark-75 font-weight-bolder d-block">{{x.OvertimeOrDueHour}}</span>
+                                                </td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <dir-pagination-controls max-size="pageSize"
+                                                             direction-links="true"
+                                                             pagination-id="employeeGrid"
+                                                             boundary-links="true">
+                                    </dir-pagination-controls>
+                                </div>
+                                <!--end::Table-->
+                            </div>
+                            <div class="tab-pane fade show" ng-class="{'active': activeTab==2}" role="tabpanel" aria-labelledby="kt_tab_pane_2">
+                                <!--begin::Table-->
+                                <div class="table-responsive">
+                                    <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_2">
+                                        <thead>
+                                            <tr class="text-uppercase">
+                                                <th class="pr-0"></th>
+                                                <th class="pl-0" style="min-width: 100px">{{languageOb.Company}}</th>
+                                                <th style="min-width: 120px">Nombres Employes</th>
+                                                <th style="min-width: 150px">
+                                                    Total Temps
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="x in CompanyWiseWorkingList">
+                                                <td class="pr-0">
+                                                    <i class="flaticon-eye icon-md" style="cursor:pointer;" ng-click="ViewCompanyWiseDetails(x.AgentId)" title="View Details"></i>
+                                                </td>
+                                                <td class="pl-0">
+                                                    <span class="text-dark-75 font-weight-bolder d-block">{{x.AgentName}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder d-block">{{x.TotalEmployee}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder d-block">{{x.TotalTime}}</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--end::Table-->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--end::Body-->
+            </div>
+            <!--end::Advance Table Widget 5-->
+
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+
+<script type="text/javascript">
+
+    var KTBootstrapDatepicker = function () {
+
+        var arrows;
+        if (KTUtil.isRTL()) {
+            arrows = {
+                leftArrow: '<i class="la la-angle-right"></i>',
+                rightArrow: '<i class="la la-angle-left"></i>'
+            }
+        } else {
+            arrows = {
+                leftArrow: '<i class="la la-angle-left"></i>',
+                rightArrow: '<i class="la la-angle-right"></i>'
+            }
+        }
+
+        // Private functions
+        var demos = function () {
+            // minimum setup
+            $('#kt_datepicker_1').datepicker({
+                rtl: KTUtil.isRTL(),
+                todayHighlight: true,
+                orientation: "bottom left",
+                templates: arrows,
+                format: 'd/m/yyyy',
+            });
+            $('#kt_datepicker_2').datepicker({
+                rtl: KTUtil.isRTL(),
+                todayHighlight: true,
+                orientation: "bottom left",
+                templates: arrows,
+                format: 'd/m/yyyy',
+            });
+        }
+
+        return {
+            // public functions
+            init: function () {
+                demos();
+            }
+        };
+    }();
+
+    jQuery(document).ready(function () {
+        KTBootstrapDatepicker.init();
+    });
+
+
+</script>
