@@ -1,14 +1,12 @@
 ﻿@using Webclient.Helpers;
 
 
-@if (Request.IsAuthenticated)
-{
 	<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
 		<div class="navbar-header">
 			<ul class="nav navbar-nav flex-row">
 				<li class="nav-item mr-auto">
 					<a class="navbar-brand" href="#">
-						<h2 style="color:white" class="brand-text mb-0"><span>EMS - </span>@User.Identity.Name</h2>
+						<h2 style="color:white" class="brand-text mb-0"><span>EMS - </span>User</h2>
 					</a>
 				</li>
 				<li class="nav-item nav-toggle">
@@ -23,40 +21,7 @@
 
 		<div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                @if (CommonUtility.IsSuperAdmin)
-                {
-                    <li class=" nav-item">
-                        <a href="/AttendanceTracking/Dashboard/Index">
-                            <i class="fa fa-dashboard"></i>
-                            <span class="menu-title">Dashboard</span>
-                        </a>
-                    </li>
-                   
-                    <li class=" nav-item">
-                        <a href="/AttendanceTracking/CompanySettings/Index">
-                            <i class="feather icon-settings"></i>
-                            <span class="menu-title">Company Setup</span>
-                        </a>
-                    </li>
-
-                    <li class=" nav-item">
-                        <a href="/AttendanceTracking/UserSettings/UserList">
-                            <i class="feather icon-list"></i>
-                            <span class="menu-title">User List</span>
-                        </a>
-                    </li>
-
-                    <li class=" nav-item">
-                        <a href="/AttendanceTracking/MasterDataSetup/Index">
-                            <i class="feather icon-settings"></i>
-                            <span class="menu-title">Master Data Setup</span>
-                        </a>
-                    </li>
-
-                  
-                }
-                else if (CommonUtility.IsAdmin)
-                {
+                
                     <li class=" nav-item">
                         <a href="/AttendanceTracking/Dashboard/Index">
                             <i class="fa fa-dashboard"></i>
@@ -132,7 +97,6 @@
                             <span class="menu-title">Department Setup</span>
                         </a>
                     </li>
-                }
                 <li class=" nav-item">
                     <a href="/AttendanceTracking/ChangePassword/ChangePassword">
                         <i class="fa fa-mail-forward"></i>
@@ -148,7 +112,6 @@
             </ul>
 		</div>
 	</div>
-}
 
 
 
