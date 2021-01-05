@@ -6,7 +6,6 @@ using System.Web.Mvc;
 
 namespace ToDoApp.Web.Controllers
 {
-    [ValidateUser]
     public class HomeController : BaseReportController
     {
         private readonly INotificationLog _notificationLog;
@@ -35,28 +34,6 @@ namespace ToDoApp.Web.Controllers
         {
             return PartialView();
         }
-
-        public ActionResult DisplayMapLocation()
-        {
-            return PartialView();
-        }
-        public ActionResult DetailsBarMapLocation()
-        {
-            return PartialView();
-        }
-
-        [HttpGet]
-        public JsonResult GetTopNotifications()
-        {
-            var query = _notificationLog.GetTop10(_userInfo.CompanyId);
-            return Json(query, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public JsonResult GetAllNotification()
-        {
-            var query = _notificationLog.GetAll(_userInfo.CompanyId);
-            return Json(query, JsonRequestBehavior.AllowGet);
-        }
+       
     }
 }

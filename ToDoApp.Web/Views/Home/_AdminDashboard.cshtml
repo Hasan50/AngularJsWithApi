@@ -58,7 +58,7 @@
             <!--begin::Info-->
             <div class="d-flex align-items-center flex-wrap mr-2">
                 <!--begin::Page Title-->
-                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">{{languageOb.Dashboard}}</h5>
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Dashborad</h5>
                 <!--end::Page Title-->
 
             </div>
@@ -74,289 +74,23 @@
     <!--begin::Entry-->
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
-        <div class="container" ng-init="GetCompanyAgents()">
+        <div class="container">
             <!--begin::Dashboard-->
 
-            <form class="mb-15" ng-init="GetAttendance(selectedDate,agentId)">
-                <div class="row mb-12">
-                    <div class="col-lg-3 mb-lg-0 mb-6">
-                        <label>{{languageOb.Date}}:</label>
-                        <input type="text" class="form-control" datepicker="" ng-model="selectedDate" readonly="readonly" placeholder="Select date">
-                    </div>
-
-                    <div class="col-lg-3 mb-lg-0 mb-6">
-                        <label>{{languageOb.Company}}:</label>
-                        <select class="form-control datatable-input" ng-model="agentId">
-                            <option value="">All</option>
-                            <option ng-repeat="t in AgentList" value="{{t.Id}}">{{t.AgentName}}</option>
-                        </select>
-                    </div>
-
-
-                    <div class="col-lg-2 mb-lg-0 mb-6">
-                        <label>&nbsp;</label>
-                        <button class="form-control btn btn-primary btn-primary--icon" ng-click="GetAttendance(selectedDate,agentId)">
-                            <span>
-                                <i class="la la-search"></i>
-                                <span>{{languageOb.Search}}</span>
-                            </span>
-                        </button>
-                    </div>
-
-                </div>
-
-            </form>
+            
 
 
 
-            <!--begin::Row-->
-            <div class="row">
-                <div class="col-lg-4">
-                    <!--begin::Stats Widget 16-->
-                    <a href="#" class="card card-custom card-stretch gutter-b">
-                        <!--begin::Body-->
-                        <div class="card-body">
-                            <span class="svg-icon svg-icon-info svg-icon-3x ml-n1">
-                                <!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Shopping/Cart3.svg-->
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24" />
-                                        <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-                                        <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-                                    </g>
-                                </svg>
-                                <!--end::Svg Icon-->
-                            </span>
-                            <div class="text-inverse-white font-weight-bolder font-size-h5 mb-2 mt-5">
-                                {{languageOb.TotalEmployee}} <span class="badge badge-primary">{{StatusCount.TotalEmployee}}</span>
-                            </div>
-
-                        </div>
-                        <!--end::Body-->
-                    </a>
-                    <!--end::Stats Widget 16-->
-                </div>
-                <div class="col-lg-4">
-                    <!--begin::Stats Widget 17-->
-                    <a href="#" class="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
-                        <!--begin::Body-->
-                        <div class="card-body">
-                            <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">
-                                <!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24" />
-                                        <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-                                        <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-                                    </g>
-                                </svg>
-                                <!--end::Svg Icon-->
-                            </span>
-                            <div class="text-inverse-info font-weight-bolder font-size-h5 mb-2 mt-5">
-                                {{languageOb.TotalCheckin}} <span class="badge badge-success">{{StatusCount.TotalCheckIn}}</span>
-                            </div>
-
-                        </div>
-                        <!--end::Body-->
-                    </a>
-                    <!--end::Stats Widget 17-->
-                </div>
-                <div class="col-lg-4">
-                    <!--begin::Stats Widget 18-->
-                    <a href="#" class="card card-custom bg-dark bg-hover-state-dark card-stretch gutter-b">
-                        <!--begin::Body-->
-                        <div class="card-body">
-                            <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">
-                                <!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Media/Equalizer.svg-->
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24" />
-                                        <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-                                        <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-                                    </g>
-                                </svg>
-                                <!--end::Svg Icon-->
-                            </span>
-                            <div class="text-inverse-dark font-weight-bolder font-size-h5 mb-2 mt-5">
-                                {{languageOb.TotalCheckout}} <span class="badge badge-warning">{{StatusCount.TotalCheckOut}}</span>
-                            </div>
-
-                        </div>
-                        <!--end::Body-->
-                    </a>
-                    <!--end::Stats Widget 18-->
-                </div>
-            </div>
-            <!--end::Row-->
+    
             <!--begin::Advance Table Widget 5-->
-            <div class="card card-custom gutter-b">
-                <!--begin::Header-->
-                <div class="card-header border-0 py-5">
-                    <h3 class="card-title align-items-start flex-column">
-                        <span class="card-label font-weight-bolder text-dark">{{languageOb.AttendanceStatus}}</span>
-                        @*<span class="text-muted mt-3 font-weight-bold font-size-sm">More than 400+ new members</span>*@
-                    </h3>
-                    <div class="card-toolbar">
-                        @*<a href="#" class="btn btn-info font-weight-bolder font-size-sm">New Report</a>*@
-                    </div>
-                </div>
-                <!--end::Header-->
-                <!--begin::Body-->
-                <div class="card-body py-0">
-
-                    <ul class="nav nav-tabs nav-tabs-line">
-                        <li class="nav-item">
-                            <a class="nav-link active" style="cursor:pointer;" data-toggle="tab" ng-click="activeTab=1">Online Employee</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="cursor:pointer;" data-toggle="tab" ng-click="activeTab=2;GetOfflineAttendance(selectedDate,agentId)">All Employee</a>
-                        </li>
-
-                    </ul>
-                    <div class="tab-content mt-5" id="myTabContent">
-                        <div class="tab-pane fade show" ng-class="{'active': activeTab==1}" role="tabpanel" aria-labelledby="kt_tab_pane_2">
-                            <!--begin::Table-->
-                            <div class="table-responsive">
-                                <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_2">
-                                    <thead>
-                                        <tr class="text-uppercase">
-                                            <th class="pr-0"></th>
-                                            <th class="pl-0" style="min-width: 100px">{{languageOb.Name}}</th>
-                                            <th style="min-width: 120px">{{languageOb.Company}}</th>
-                                            <th style="min-width: 150px">
-                                                {{languageOb.InTime}}
-                                            </th>
-                                            <th style="min-width: 150px">{{languageOb.OutTime}}</th>
-                                            <th style="min-width: 130px">{{languageOb.WoringHour}}</th>
-                                            <th class="pr-0 text-right" style="min-width: 160px"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="x in AttendanceList">
-                                            <td class="pr-0">
-                                                <div class="symbol symbol-50 symbol-light mt-1">
-                                                    <span class="symbol-label" ng-if="x.ImageFileName!='' && x.ImageFileName!=null">
-                                                        <img src="{{resourceUrl+x.ImageFileName}}" class="h-75 align-self-end" alt="">
-                                                    </span>
-                                                    <div class="symbol-label" ng-if="x.ImageFileName=='' || x.ImageFileName==null" style="background-image: url('/keentheme/media/users/blank.png')"></div>
-                                                </div>
-                                            </td>
-             
-                                            <td class="pl-0">
-                                                <span class="text-dark-75 font-weight-bolder d-block">{{x.EmployeeName}}</span>
-                                            </td>
-                                            <td>
-                                                <span class="text-dark-75 font-weight-bolder d-block">{{x.AgentName}}</span>
-                                            </td>
-                                            <td>
-                                                <span class="text-dark-75 font-weight-bolder d-block">{{x.CheckInTimeVw}}</span>
-                                            </td>
-                                            <td>
-                                                <span class="text-dark-75 font-weight-bolder d-block">{{x.CheckOutTimeVw}}</span>
-                                            </td>
-                                            <td>
-                                                <span class="text-dark-75 font-weight-bolder d-block">{{x.OfficeStayHour}}</span>
-                                            </td>
-                                            <td class="pr-0 text-right">
-                                                <i class="flaticon-map-location icon-xl" style="cursor:pointer;" ng-click="OpenMapLocation(x)"></i>
-                                                <i class="flaticon2-down icon-xl" style="cursor:pointer;margin-left:10px;" title="Details" ng-click="showDetailsBar(x,$event)"></i>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!--end::Table-->
-                        </div>
-                        <div class="tab-pane fade show"  ng-class="{'active': activeTab==2}" role="tabpanel" aria-labelledby="kt_tab_pane_2">
-                            <!--begin::Table-->
-                            <div class="table-responsive">
-                                <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_2">
-                                    <thead>
-                                        <tr class="text-uppercase">
-                                            <th class="pr-0"></th>
-                                            <th class="pl-0" style="min-width: 100px">{{languageOb.Name}}</th>
-                                            <th style="min-width: 120px">{{languageOb.Company}}</th>
-                                            <th style="min-width: 150px">
-                                                {{languageOb.InTime}}
-                                            </th>
-                                            <th style="min-width: 150px">{{languageOb.OutTime}}</th>
-                                            <th style="min-width: 130px">{{languageOb.WoringHour}}</th>
-                                            <th class="pr-0 text-right" style="min-width: 160px"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="x in offlineAttendance">
-                                            <td class="pr-0">
-                                                <div class="symbol symbol-50 symbol-light mt-1">
-                                                    <span class="symbol-label" ng-if="x.ImageFileName!='' && x.ImageFileName!=null">
-                                                        <img src="{{resourceUrl+x.ImageFileName}}" class="h-75 align-self-end" alt="">
-                                                    </span>
-                                                    <div class="symbol-label" ng-if="x.ImageFileName=='' || x.ImageFileName==null" style="background-image: url('/keentheme/media/users/blank.png');"></div>
-                                                </div>
-                                            </td>
-                                            <td class="pl-0">
-                                                <span class="text-dark-75 font-weight-bolder d-block">{{x.EmployeeName}}</span>
-                                            </td>
-                                            <td>
-                                                <span class="text-dark-75 font-weight-bolder d-block">{{x.AgentName}}</span>
-                                            </td>
-                                            <td>
-                                                <span class="text-dark-75 font-weight-bolder d-block">{{x.CheckInTimeVw}}</span>
-                                            </td>
-                                            <td>
-                                                <span class="text-dark-75 font-weight-bolder d-block">{{x.CheckOutTimeVw}}</span>
-                                            </td>
-                                            <td>
-                                                <span class="text-dark-75 font-weight-bolder d-block">{{x.OfficeStayHour}}</span>
-                                            </td>
-                                            <td class="pr-0 text-right">
-                                                <i class="flaticon-map-location icon-xl" style="cursor:pointer;" ng-click="OpenMapLocation(x)"></i>
-                                                <i class="flaticon2-down icon-xl" style="cursor:pointer;margin-left:10px;" title="Details" ng-click="showDetailsBar(x,$event)"></i>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!--end::Table-->
-                        </div>
-                    </div>
-
-                </div>
-                <!--end::Body-->
-            </div>
+            
             <!--end::Advance Table Widget 5-->
             <!--end::Dashboard-->
         </div>
         <!--end::Container-->
     </div>
 
-    <div id="divDetails" class="details-bar" ng-controller="dashboardController">
-        <div class="text-center" ng-show="LocationList.length==0"><p style="margin-top: -2px;color: white;">No activity found for today.</p></div>
-        <div class="details-bar-panel" ng-repeat="x in LocationList" ng-class="{'details-bar-inner': x.IsGapBarPin && !x.IsLastOut ,'details-bar-starting': !x.IsStarting && !x.IsGapBarPin}" ng-style="{'width': x.Width}">
-            <span class="fas fa-map-marker-alt icon-xl details-bar-pin-white" ng-if="x.IsStarting"></span>
-            <span class="fas fa-map-marker-alt icon-xl details-bar-pin" ng-if="!x.IsStarting" style="cursor:pointer;" ng-click="OpenDetailsMapLocation(x)"></span>
-            <span class="details-bar-text">{{x.Title}}</span>
-
-            @*<div ng-if="x.IsLastOut" ng-style="{'width': x.Width}"></div>
-            <span ng-if="x.IsLastOut" class="fas fa-map-marker-alt icon-xl details-bar-pin-last" style="cursor:pointer;" ng-click="OpenDetailsMapLocation(x)"></span>
-            <span ng-if="x.IsLastOut" class="details-bar-text" style="top:-6px;float:right;">{{x.LastTitle}}</span>*@
-
-        </div>
-
-        <div style="clear:both;"></div>
-    </div>
+    
     <!--end::Entry-->
 </div>
 
-<script type="text/javascript">
-    $(document).mouseup(function (e) {
-        var container = $("#divDetails");
-        // if the target of the click isn't the container nor a descendant of the container
-        if (!container.is(e.target) && container.has(e.target).length === 0) {
-            container.hide();
-            console.log(container);
-        }
-    });
-</script>
